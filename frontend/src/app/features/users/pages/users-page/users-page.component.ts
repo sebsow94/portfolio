@@ -12,5 +12,5 @@ import { AsyncPipe } from '@angular/common';
 export class UsersPageComponent {
   private readonly usersApiService = inject(UsersApiService);
 
-  protected readonly users$ = this.usersApiService.getUsers();
+  readonly users$ = this.usersApiService.getUsers();
 }
