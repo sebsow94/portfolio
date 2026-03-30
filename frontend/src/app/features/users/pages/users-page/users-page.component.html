@@ -1,5 +1,6 @@
-@if (users$ | async; as users) {
-    @for (user of users$ | async; track user.id) {
+@if (filteredUsers$ | async; as users) {
+    <input type="text" [formControl]="searchControl">
+    @for (user of users; track user.id) {
         <p>{{ user.name }}</p>
     }
 } @else {
