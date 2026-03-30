@@ -1,0 +1,7 @@
+@if (users$ | async; as users) {
+    @for (user of users$ | async; track user.id) {
+        <p>{{ user.name }}</p>
+    }
+} @else {
+    <p>Loading...</p>
+}
