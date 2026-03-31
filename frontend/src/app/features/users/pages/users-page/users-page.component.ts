@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { UsersApiService } from '../../services/users-api.service';
 import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs';
+import { UsersStore } from '../../store/users.store';
 
 @Component({
   selector: 'app-users-page',
@@ -12,14 +13,11 @@ import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersPageComponent {
-  private readonly usersApiService = inject(UsersApiService);
+  private readonly store = inject(UsersStore);
 
   readonly searchControl = new FormControl<string>('', { nonNullable: true });
 
-  filteredUsers$ = this.searchControl.valueChanges.pipe(
-    startWith(''),
-    debounceTime(300),
-    distinctUntilChanged(),
-    switchMap(search => this.usersApiService.getUsers(search))
+  readonly users$ = this.store.connectSearch(
+    this.searchControl.valueChanges.pipe(startWith(''))
   );
 }

@@ -1,4 +1,4 @@
-@if (filteredUsers$ | async; as users) {
+@if (users$ | async; as users) {
     <input type="text" [formControl]="searchControl">
 
     @if (users.length === 0) {
