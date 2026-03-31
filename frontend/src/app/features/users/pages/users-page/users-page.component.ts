@@ -4,10 +4,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { startWith } from 'rxjs';
 import { UsersStore } from '../../store/users.store';
 import { CapitalizePipe } from '../../../../shared/pipes/capitalize-pipe';
+import { HighlightDirective } from '../../../../shared/directives/highlight.directive';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, ReactiveFormsModule, CapitalizePipe],
+  imports: [AsyncPipe, ReactiveFormsModule, CapitalizePipe, HighlightDirective],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
