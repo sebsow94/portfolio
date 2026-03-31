@@ -6,7 +6,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UsersApiService {
-  private readonly usersMock = [
+  private readonly usersMock: readonly User[] = [
     { id: 1, name: 'Anna' },
     { id: 2, name: 'Jan' },
     { id: 3, name: 'Adrian' },
@@ -18,9 +18,9 @@ export class UsersApiService {
     { id: 9, name: 'Henryk' }
   ];
 
-  getUsers(filter: string): Observable<User[]> {
+  getUsers(filter: string): Observable<readonly User[]> {
     return of(this.usersMock.filter(user =>
-      user.name.toLowerCase().includes(filter.toLocaleLowerCase())
+      user.name.toLowerCase().includes(filter.toLowerCase())
     )).pipe(delay(500));
   }
 }

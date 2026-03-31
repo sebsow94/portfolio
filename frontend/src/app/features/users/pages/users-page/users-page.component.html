@@ -1,7 +1,12 @@
 @if (filteredUsers$ | async; as users) {
     <input type="text" [formControl]="searchControl">
-    @for (user of users; track user.id) {
-        <p>{{ user.name }}</p>
+
+    @if (users.length === 0) {
+        <p>No results</p>
+    } @else {
+        @for (user of users; track user.id) {
+            <p>{{ user.name }}</p>
+        }
     }
 } @else {
     <p>Loading...</p>
