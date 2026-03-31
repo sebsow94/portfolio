@@ -7,14 +7,14 @@ import { User } from '../models/user';
 })
 export class UsersApiService {
   private readonly usersMock: readonly User[] = [
-    { id: 1, name: 'Anna' },
-    { id: 2, name: 'Jan' },
-    { id: 3, name: 'Adrian' },
-    { id: 4, name: 'Michalina' },
-    { id: 5, name: 'Emilia' },
-    { id: 6, name: 'Dawid' },
-    { id: 7, name: 'Helena' },
-    { id: 8, name: 'Ela' },
+    { id: 1, name: 'anna' },
+    { id: 2, name: 'jan' },
+    { id: 3, name: 'adrian' },
+    { id: 4, name: 'michalina' },
+    { id: 5, name: 'emilia' },
+    { id: 6, name: 'dawid' },
+    { id: 7, name: 'helena' },
+    { id: 8, name: 'ela' },
     { id: 9, name: 'Henryk' }
   ];
 
