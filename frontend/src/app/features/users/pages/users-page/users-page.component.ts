@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UsersApiService } from '../../services/users-api.service';
 import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { combineLatest, debounceTime, distinctUntilChanged, map, Observable, startWith, switchMap } from 'rxjs';
-import { User } from '../../models/user';
+import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-users-page',
