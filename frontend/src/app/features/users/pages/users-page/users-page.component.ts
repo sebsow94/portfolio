@@ -21,4 +21,11 @@ export class UsersPageComponent {
   readonly users$ = this.store.connectSearch(
     this.searchControl.valueChanges.pipe(startWith(''))
   );
+
+  addUser(): void {
+    this.store.addUser({
+      id: Date.now(),
+      name: 'Nowy User'
+    });
+  }
 }
