@@ -1,3 +1,4 @@
+<button class="btn" (click)="addUser()">Add user</button><br><br>
 @if (users$ | async; as users) {
     <input type="text" [formControl]="searchControl">
 
@@ -5,7 +6,7 @@
         <p>No results</p>
     } @else {
         @for (user of users; track user.id) {
-            <p>{{ user.name }}</p>
+            <p appHighlight>{{ user.name | capitalize }}</p>
         }
     }
 } @else {

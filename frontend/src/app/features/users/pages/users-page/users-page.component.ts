@@ -1,13 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { UsersApiService } from '../../services/users-api.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs';
+import { startWith } from 'rxjs';
 import { UsersStore } from '../../store/users.store';
+import { CapitalizePipe } from '../../../../shared/pipes/capitalize-pipe';
+import { HighlightDirective } from '../../../../shared/directives/highlight.directive';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, ReactiveFormsModule],
+  imports: [AsyncPipe, ReactiveFormsModule, CapitalizePipe, HighlightDirective],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,4 +21,11 @@ export class UsersPageComponent {
   readonly users$ = this.store.connectSearch(
     this.searchControl.valueChanges.pipe(startWith(''))
   );
+
+  addUser(): void {
+    this.store.addUser({
+      id: Date.now(),
+      name: 'Nowy User'
+    });
+  }
 }
